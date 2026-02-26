@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:9999/api/v1
+# @name register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword"
+}
+
+###
+
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpassword",
+  "rememberMe": true
+}
+
+###
+
+# @name check-auth
+GET {{baseUrl}}/check-auth
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.$.token}}
