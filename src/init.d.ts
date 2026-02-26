@@ -6,3 +6,9 @@ interface RegisterPayload {
 interface LoginPayload extends RegisterPayload {
   rememberMe?: boolean;
 }
+
+declare namespace Express {
+  interface Request {
+    user?: string | JWTPayload;
+  }
+}
